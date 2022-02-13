@@ -5,7 +5,7 @@ Console.OutputEncoding = Encoding.UTF8;
 Console.WriteLine("Добро пожаловать в игру 'Угадай число'");
 
 int minValue = 0;
-int maxValue = 999;
+int maxValue = 1000;
 int answerCount = 0;
 bool verifiUserName = false;
 string? userName = null;
