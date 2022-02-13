@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32126.317
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Homeworks.CleanetCode.TypesBranchesAndLoops", "Homeworks.CleanetCode.TypesBranchesAndLoops\Homeworks.CleanetCode.TypesBranchesAndLoops.csproj", "{3A16D3A8-E36B-48C0-9CF4-6DCA235DF783}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Homework.GuessingNumberGame", "Homework.GuessingNumberGame\Homework.GuessingNumberGame.csproj", "{817ED4F1-B50C-4D26-903A-B279FD9A2E08}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3A16D3A8-E36B-48C0-9CF4-6DCA235DF783}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A16D3A8-E36B-48C0-9CF4-6DCA235DF783}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A16D3A8-E36B-48C0-9CF4-6DCA235DF783}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A16D3A8-E36B-48C0-9CF4-6DCA235DF783}.Release|Any CPU.Build.0 = Release|Any CPU
+		{817ED4F1-B50C-4D26-903A-B279FD9A2E08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{817ED4F1-B50C-4D26-903A-B279FD9A2E08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{817ED4F1-B50C-4D26-903A-B279FD9A2E08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{817ED4F1-B50C-4D26-903A-B279FD9A2E08}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8ED281B9-B1AD-45F9-BB40-93EFF3D47313}
+	EndGlobalSection
+EndGlobal
