@@ -1,17 +1,13 @@
 ﻿using System.Text;
-using System.Text.RegularExpressions;
 
 Console.OutputEncoding = Encoding.UTF8;
 
 Console.WriteLine("Добро пожаловать в игру 'Угадай число'");
 
-string nameValidationPattern = @"^[a-zA-Zа-яА-Я]+$";
-string playerContinueAnswerPattern = @"^[y, n]+$";
-
 int minValue = 0;
 int maxValue = 1000;
 int answerCount = 0;
-bool verifiUserName = false;
+bool isValidUserName = false;
 string? userName = null;
 Random random = new Random();
 int secretNumber = random.Next(minValue, maxValue);
@@ -22,18 +18,16 @@ do
 	Console.WriteLine("Как вас зовут?");
 	userName = Console.ReadLine();
 
-	var match = Regex.Match(userName, nameValidationPattern, RegexOptions.IgnoreCase);
-
-	if (!match.Success)
+	if (string.IsNullOrWhiteSpace(userName))
 	{
 		Console.WriteLine("Некоректный ввод. Попробуйте еще.");
-		verifiUserName = false;
+		isValidUserName = false;
 	}
 	else
 	{
-		verifiUserName = true;
+		isValidUserName = true;
 	}
-} while (!verifiUserName);
+} while (!isValidUserName);
 
 Console.WriteLine(
 	$"Привет {userName}. " +
@@ -44,21 +38,21 @@ while (isContinue)
 {
 	int userNumber = -1;
 	bool isIntNumber = false;
-	bool isVerifiNumber = false;
-	bool isVerifiUserAnswer = false;
+	bool isValidNumber = false;
+	bool isValidUserAnswer = false;
 
 	do
 	{
 		Console.WriteLine($"Введи число от {minValue} до {maxValue - 1} {secretNumber}");
 		string? userInput = Console.ReadLine();
 		isIntNumber = int.TryParse(userInput, out userNumber);
-		isVerifiNumber = isIntNumber && userNumber >= minValue && userNumber <= maxValue;
+		isValidNumber = isIntNumber && userNumber >= minValue && userNumber <= maxValue;
 
-		if (!isVerifiNumber)
+		if (!isValidNumber)
 		{
 			Console.WriteLine($"Вы ввели {userInput}. Нужно ввести число от {minValue} до {maxValue - 1}");
 		}
-	} while (!isVerifiNumber);
+	} while (!isValidNumber);
 
 	answerCount++;
 
@@ -78,32 +72,26 @@ while (isContinue)
 		do
 		{
 			Console.WriteLine("Продолжаем играть? Введите y/n");
-			userInputContinue = Console.ReadLine();
+			userInputContinue = Console.ReadLine().Trim().ToLower();
 
-			var match = Regex.Match(userInputContinue, playerContinueAnswerPattern, RegexOptions.IgnoreCase);
-
-			if (!match.Success)
+            if (string.IsNullOrWhiteSpace(userInputContinue))
+            {
+                Console.WriteLine("Неверный ввод. Введите y/n.");
+            }
+            if (userInputContinue == "y")
 			{
-				Console.WriteLine("Неверный ввод. Введите y/n.");
-				isVerifiUserAnswer = false;
+				isContinue = true;
+				random = new Random();
+				secretNumber = random.Next(minValue, maxValue);
+				answerCount = 0;
+				isValidUserAnswer = true;
 			}
-			else
+			if (userInputContinue == "n")
 			{
-				isVerifiUserAnswer = true;
+				isContinue = false;
+				isValidUserAnswer = true;
 			}
-		} while (!isVerifiUserAnswer);
-
-		if (userInputContinue.ToLower() == "y")
-		{
-			isContinue = true;
-			random = new Random();
-			secretNumber = random.Next(minValue, maxValue);
-			answerCount = 0;
-		}
-		if (userInputContinue.ToLower() == "n")
-		{
-			isContinue = false;
-		}
+		} while (!isValidUserAnswer);
 	}
 }
 
