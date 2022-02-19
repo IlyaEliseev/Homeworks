@@ -43,7 +43,7 @@ while (isContinue)
 
 	do
 	{
-		Console.WriteLine($"Введи число от {minValue} до {maxValue - 1} {secretNumber}");
+		Console.WriteLine($"Введи число от {minValue} до {maxValue - 1}");
 		string? userInput = Console.ReadLine();
 		isIntNumber = int.TryParse(userInput, out userNumber);
 		isValidNumber = isIntNumber && userNumber >= minValue && userNumber <= maxValue;
