@@ -1,9 +1,6 @@
 ﻿using CleanetCode.TodoList.CLI.Models;
 using CleanetCode.TodoList.CLI.Storages;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+
 namespace CleanetCode.TodoList.CLI.Operations
 {
     public class LoginUserOperation : IOperation
@@ -19,6 +16,7 @@ namespace CleanetCode.TodoList.CLI.Operations
 			if (user != null)
 			{
 				UserSession.CurrentUser = user;
+				UserSession.Login = true;
 			}
             else
             {

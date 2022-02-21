@@ -9,18 +9,25 @@ namespace CleanetCode.TodoList.CLI.Operations
 
         public void Execute()
         {
-            List<TaskModel> tasks = TaskStorage.GetAll();
-
-            tasks.ForEach(task =>
+            if (UserSession.Login == true)
             {
-                Console.WriteLine();
-                Console.WriteLine($"Id: {task.InStorrageId}" +
-                                  $" Name: {task.Name} " +
-                                  $" Description: {task.Description}" +
-                                  $" Task complite status: {task.IsCompleted}" +
-                                  $" Create time: {task.CreatedDate}");
-                Console.WriteLine();
-            });
+                List<TaskModel> tasks = TaskStorage.GetAll();
+
+                tasks.ForEach(task =>
+                {
+                    Console.WriteLine();
+                    Console.WriteLine($"Id: {task.InStorrageId}" +
+                                      $" Name: {task.Name} " +
+                                      $" Description: {task.Description}" +
+                                      $" Task complite status: {task.IsCompleted}" +
+                                      $" Create time: {task.CreatedDate}");
+                    Console.WriteLine();
+                });
+            }
+            else
+            {
+                Console.WriteLine("Please login!");
+            }
         }
     }
 }

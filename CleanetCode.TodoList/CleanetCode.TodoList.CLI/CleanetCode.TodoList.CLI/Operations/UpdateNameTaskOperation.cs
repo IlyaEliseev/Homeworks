@@ -23,7 +23,6 @@ namespace CleanetCode.TodoList.CLI.Operations
                 {
                     TaskModel task = TaskStorage.GetById(taskId);
                     task.Name = newName;
-
                 }
                 else
                 {

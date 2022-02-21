@@ -10,27 +10,34 @@ namespace CleanetCode.TodoList.CLI.Operations
 
         public void Execute()
         {
-            Console.WriteLine("Input task name: ");
-            string taskName = Console.ReadLine();
-            Console.WriteLine("Input task description: ");
-            string taskDescription = Console.ReadLine();
-
-            TaskModel task = new TaskModel
+            if (UserSession.Login == true)
             {
-                Id = Guid.NewGuid(),
-                Name = taskName,
-                Description = taskDescription,
-                UserId = UserSession.CurrentUser.Id,
-                CreatedDate = DateTime.Now
-            };
+                Console.WriteLine("Input task name: ");
+                string taskName = Console.ReadLine();
+                Console.WriteLine("Input task description: ");
+                string taskDescription = Console.ReadLine();
 
-            bool isCreatedSuccess = TaskStorage.Add(task);
-            if (!isCreatedSuccess)
-            {
-                Console.WriteLine("Task create is not complited. Try again!");
+                TaskModel task = new TaskModel
+                {
+                    Id = Guid.NewGuid(),
+                    Name = taskName,
+                    Description = taskDescription,
+                    UserId = UserSession.CurrentUser.Id,
+                    CreatedDate = DateTime.Now
+                };
+
+                bool isCreatedSuccess = TaskStorage.Add(task);
+                if (!isCreatedSuccess)
+                {
+                    Console.WriteLine("Task create is not complited. Try again!");
+                }
+
+                Console.WriteLine("Task created!");
             }
-
-            Console.WriteLine("Task created!");
+            else
+            {
+                Console.WriteLine("Please login!");
+            }
         }
     }
 }

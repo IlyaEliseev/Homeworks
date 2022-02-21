@@ -14,6 +14,16 @@ namespace CleanetCode.TodoList.CLI.Operations
 
             bool isNumber = int.TryParse(userInput, out int number);
 
+            if (UserSession.Login == true)
+            {
+                
+            }
+            else
+            {
+                Console.WriteLine("Please login!");
+            }
+
+
             if (isNumber)
             {
                 TaskModel compliteTask = TaskStorage.GetById(number);

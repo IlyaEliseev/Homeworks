@@ -5,5 +5,6 @@ namespace CleanetCode.TodoList.CLI
     public class UserSession
     {
         public static User CurrentUser { get; set; }
+        public static bool Login = false;
     }
 }

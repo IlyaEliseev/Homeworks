@@ -9,26 +9,33 @@ namespace CleanetCode.TodoList.CLI.Operations
 
         public void Execute()
         {
-            Console.WriteLine("Input task Id: ");
-            string userInput = Console.ReadLine();
-
-            bool isNumber = int.TryParse(userInput, out int number);
-
-            if (isNumber)
+            if (UserSession.Login == true)
             {
-                TaskModel compliteTask = TaskStorage.GetById(number);
-                if (compliteTask != null)
+                Console.WriteLine("Input task Id: ");
+                string userInput = Console.ReadLine();
+
+                bool isNumber = int.TryParse(userInput, out int number);
+
+                if (isNumber)
                 {
-                    compliteTask.DeletedDate = DateTime.Now;
+                    TaskModel compliteTask = TaskStorage.GetById(number);
+                    if (compliteTask != null)
+                    {
+                        compliteTask.DeletedDate = DateTime.Now;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Id is not found!");
+                    }
                 }
                 else
                 {
-                    Console.WriteLine("Id is not found!");
+                    Console.WriteLine("Wrong id!");
                 }
             }
             else
             {
-                Console.WriteLine("Wrong id!");
+                Console.WriteLine("Please login!");
             }
         }
     }
