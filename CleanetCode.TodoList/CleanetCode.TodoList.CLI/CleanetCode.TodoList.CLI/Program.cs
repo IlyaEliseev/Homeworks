@@ -7,7 +7,9 @@ Console.OutputEncoding = Encoding.UTF8;
 IOperation[] operations = new IOperation[]
 {
 	new LoginUserOperation(),
-	new CreateNewUserOperation()
+	new CreateNewUserOperation(),
+	new CreateNewTaskOperation(),
+	new PrintIntoConsoleAllTasksOperation()
 };
 
 Menu menu = new Menu(operations);

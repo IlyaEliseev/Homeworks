@@ -1,12 +1,25 @@
-﻿namespace CleanetCode.TodoList.CLI.Operations
+﻿using CleanetCode.TodoList.CLI.Models;
+using CleanetCode.TodoList.CLI.Storages;
+
+namespace CleanetCode.TodoList.CLI.Operations
 {
     public class UpdateTaskOperation : IOperation
     {
-        public string Name => throw new NotImplementedException();
+        public string Name => "Update task";
 
         public void Execute()
         {
-            throw new NotImplementedException();
+            string userInput = Console.ReadLine();
+
+            bool isNumber = int.TryParse(userInput, out int taskId);
+            if (isNumber)
+            {
+                TaskModel task = TaskStorage.GetById(taskId);
+            }
+
+            
+                
+            
         }
     }
 }

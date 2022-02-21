@@ -5,11 +5,11 @@ namespace CleanetCode.TodoList.CLI.Operations
 {
     public class CreateNewUserOperation : IOperation
     {
-		public string Name => "Создать нового пользователя";
+		public string Name => "Create new user";
 
 		public void Execute()
 		{
-			Console.Write("Введите ваш email:");
+			Console.Write("Input your email:");
 			string? email = Console.ReadLine();
 
 			User newUser = new User
@@ -20,10 +20,10 @@ namespace CleanetCode.TodoList.CLI.Operations
 			bool userCreated = UserStorage.Create(newUser);
 			if (!userCreated)
 			{
-				Console.WriteLine("Пользователь с таким email уже есть");
+				Console.WriteLine("User with this email is already exists!");
 			}
 
-			Console.WriteLine("Пользователь был успешно создан");
+			Console.WriteLine("User is created");
 		}
 	}
 }

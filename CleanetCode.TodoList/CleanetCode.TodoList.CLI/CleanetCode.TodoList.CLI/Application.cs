@@ -11,9 +11,9 @@
 
 		public void Run()
 		{
-			bool userQuit = false;
+			bool isUserQuit = false;
 
-			while (!userQuit)
+			while (!isUserQuit)
 			{
 				List<string> operationNames = new List<string>();
 				operationNames.Add("q - выйти из программы");
@@ -26,7 +26,7 @@
 				string? userInput = Console.ReadLine();
 				if (userInput != null && userInput.Trim().ToLower() == "q")
 				{
-					userQuit = true;
+					isUserQuit = true;
 				}
 
 				bool isNumber = int.TryParse(userInput, out int operationNumber);
