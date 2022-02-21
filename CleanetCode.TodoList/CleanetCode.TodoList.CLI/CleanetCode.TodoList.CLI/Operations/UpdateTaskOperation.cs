@@ -5,52 +5,50 @@ namespace CleanetCode.TodoList.CLI.Operations
 {
     public class UpdateTaskOperation : IOperation
     {
-        private List<IOperation> _operations;
-        public UpdateTaskOperation(IOperation[] operations)
+        public UpdateTaskOperation()
         {
-            _operations = new List<IOperation>();
+            
         }
 
         public string Name => "Update task";
 
         public void Execute()
         {
+            IOperation[] _operations = new IOperation[]
+            {
+                new UpdateNameTaskOperation(),
+                new UpdateDescriptionTaskOperation()
+            };
+
             List<string> operationNames = new List<string>();
 
-            for (int i = 0; i < operationNames.Count; i++)
+            for (int i = 0; i < _operations.Length; i++)
             {
-                operationNames.Add($"{i} - Update task name");
-                operationNames.Add($"{i} - Update task description");
-                operationNames.Add($"{i} - Update task status");
+                operationNames.Add($"{i} - {_operations[i].Name}");
             }
 
             Console.WriteLine(string.Join("\n", operationNames));
             Console.Write("Введите номер операции: ");
 
-            string? userInput = Console.ReadLine();
-            //if (userInput != null && userInput.Trim().ToLower() == "q")
-            //{
-            //    isUserQuit = true;
-            //}
-
+            string userInput = Console.ReadLine();
             bool isNumber = int.TryParse(userInput, out int operationNumber);
             if (isNumber)
             {
-                _menu.Enter(operationNumber);
+                _operations[operationNumber].Execute();
             }
 
-            Console.WriteLine("Input new task name:");
-            string taskName = Console.ReadLine();
-            Console.WriteLine("Input new task description:");
-            string taskDescription = Console.ReadLine();
+            //Console.WriteLine("Input new task name:");
+            //string taskName = Console.ReadLine();
+            //Console.WriteLine("Input new task description:");
+            //string taskDescription = Console.ReadLine();
 
-            string userInput = Console.ReadLine();
+            //string userInput = Console.ReadLine();
 
-            bool isNumber = int.TryParse(userInput, out int taskId);
-            if (isNumber)
-            {
-                TaskModel task = TaskStorage.GetById(taskId);
-            }
+            //bool isNumber = int.TryParse(userInput, out int taskId);
+            //if (isNumber)
+            //{
+            //    TaskModel task = TaskStorage.GetById(taskId);
+            //}
         }
     }
 }

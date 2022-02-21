@@ -11,6 +11,7 @@ IOperation[] operations = new IOperation[]
 	new CreateNewTaskOperation(),
 	new PrintIntoConsoleAllTasksOperation(),
 	new CompleteTaskOperation(),
+	new UpdateTaskOperation(),
 	new DeleteTaskOperation()
 };
 

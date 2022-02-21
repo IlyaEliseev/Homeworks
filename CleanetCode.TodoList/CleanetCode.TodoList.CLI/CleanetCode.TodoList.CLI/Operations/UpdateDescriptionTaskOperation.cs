@@ -2,7 +2,7 @@
 {
     public class UpdateDescriptionTaskOperation : IOperation
     {
-        public string Name => throw new NotImplementedException();
+        public string Name => "Update task description";
 
         public void Execute()
         {
