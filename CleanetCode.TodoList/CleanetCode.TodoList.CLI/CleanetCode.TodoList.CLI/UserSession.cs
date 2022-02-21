@@ -2,7 +2,7 @@
 
 namespace CleanetCode.TodoList.CLI
 {
-    internal class UserSession
+    public class UserSession
     {
         public static User CurrentUser { get; set; }
     }

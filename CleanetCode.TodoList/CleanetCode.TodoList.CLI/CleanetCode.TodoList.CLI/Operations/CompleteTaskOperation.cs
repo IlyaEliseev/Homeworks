@@ -5,12 +5,11 @@ namespace CleanetCode.TodoList.CLI.Operations
 {
     public class CompleteTaskOperation : IOperation
     {
-        public string Name => throw new NotImplementedException();
+        public string Name => "Complete task";
 
         public void Execute()
         {
-
-            Console.WriteLine("Input task number: ");
+            Console.WriteLine("Input task Id: ");
             string userInput = Console.ReadLine();
 
             bool isNumber = int.TryParse(userInput, out int number);
@@ -22,10 +21,14 @@ namespace CleanetCode.TodoList.CLI.Operations
                 {
                     compliteTask.IsCompleted = true;
                 }
+                else
+                {
+                    Console.WriteLine("Id is not found!");
+                }
             }
             else
             {
-                Console.WriteLine("Wrong number!");
+                Console.WriteLine("Wrong id!");
             }
         }
     }

@@ -9,7 +9,9 @@ IOperation[] operations = new IOperation[]
 	new LoginUserOperation(),
 	new CreateNewUserOperation(),
 	new CreateNewTaskOperation(),
-	new PrintIntoConsoleAllTasksOperation()
+	new PrintIntoConsoleAllTasksOperation(),
+	new CompleteTaskOperation(),
+	new DeleteTaskOperation()
 };
 
 Menu menu = new Menu(operations);
