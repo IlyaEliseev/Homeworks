@@ -47,7 +47,7 @@ namespace CleanetCode.TodoList.CLI.Storages
                     {
                         foreach (var data in deserializeData)
                         {
-                            UserStorage.Create(data.Value);
+                            UserStorage.ReadIntoFile(data);
                         }
                     }
                 }

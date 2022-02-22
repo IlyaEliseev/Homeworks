@@ -21,5 +21,10 @@ namespace CleanetCode.TodoList.CLI.Storages
         {
 			return _users;
         }
+
+		public static void ReadIntoFile(KeyValuePair<string, User> data)
+		{
+			_users.TryAdd(data.Key, data.Value);
+		}
 	}
 }
