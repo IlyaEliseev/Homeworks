@@ -11,7 +11,7 @@ namespace CleanetCode.TodoList.CLI.Operations
         {
             if (UserSession.Login == true)
             {
-                Console.WriteLine("Input task Id: ");
+                ColorMessage.SetGreenColor("Input task Id: ");
                 string userInput = Console.ReadLine();
 
                 bool isNumber = int.TryParse(userInput, out int number);
@@ -22,20 +22,21 @@ namespace CleanetCode.TodoList.CLI.Operations
                     if (compliteTask != null)
                     {
                         compliteTask.DeletedDate = DateTime.Now;
+                        ColorMessage.SetGreenColor("Task deleted!");
                     }
                     else
                     {
-                        Console.WriteLine("Id is not found!");
+                        ColorMessage.SetRedColor("Id is not found!");
                     }
                 }
                 else
                 {
-                    Console.WriteLine("Wrong id!");
+                    ColorMessage.SetRedColor("Wrong id!");
                 }
             }
             else
             {
-                Console.WriteLine("Please login!");
+                ColorMessage.SetRedColor("Please login!");
             }
         }
     }

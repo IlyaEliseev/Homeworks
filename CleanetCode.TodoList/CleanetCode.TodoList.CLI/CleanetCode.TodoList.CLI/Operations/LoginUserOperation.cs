@@ -9,7 +9,7 @@ namespace CleanetCode.TodoList.CLI.Operations
 
 		public void Execute()
 		{
-			Console.Write("Input youre email:");
+			ColorMessage.SetGreenColor("Input youre email:");
 			string? email = Console.ReadLine();
 			User? user = UserStorage.Get(email);
 
@@ -17,10 +17,11 @@ namespace CleanetCode.TodoList.CLI.Operations
 			{
 				UserSession.CurrentUser = user;
 				UserSession.Login = true;
+				ColorMessage.SetGreenColor("You login!");
 			}
-            else
+			else
             {
-                Console.WriteLine("User not found!");
+				ColorMessage.SetRedColor("User not found!");
             }
 		}
 	}

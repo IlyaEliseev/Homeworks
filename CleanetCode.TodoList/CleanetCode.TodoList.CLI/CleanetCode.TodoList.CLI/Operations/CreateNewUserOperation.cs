@@ -9,21 +9,22 @@ namespace CleanetCode.TodoList.CLI.Operations
 
 		public void Execute()
 		{
-			Console.Write("Input your email:");
+			ColorMessage.SetGreenColor("Input your email:");
 			string? email = Console.ReadLine();
 
 			User newUser = new User
 			{
-				Email = email,
+				Id = Guid.NewGuid(),
+				Email = email
 			};
 
 			bool userCreated = UserStorage.Create(newUser);
 			if (!userCreated)
 			{
-				Console.WriteLine("User with this email is already exists!");
+				ColorMessage.SetRedColor("User with this email is already exists!");
 			}
 
-			Console.WriteLine("User is created");
+			ColorMessage.SetGreenColor("User create");
 		}
 	}
 }

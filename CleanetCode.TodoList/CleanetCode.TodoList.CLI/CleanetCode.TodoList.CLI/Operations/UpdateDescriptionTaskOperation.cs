@@ -9,36 +9,29 @@ namespace CleanetCode.TodoList.CLI.Operations
 
         public void Execute()
         {
-            if (UserSession.Login == true)
+            ColorMessage.SetGreenColor("Input task Id: ");
+            string userInput = Console.ReadLine();
+
+            bool isNumber = int.TryParse(userInput, out int taskId);
+
+            if (isNumber)
             {
-                Console.WriteLine("Input task Id: ");
-                string userInput = Console.ReadLine();
+                ColorMessage.SetGreenColor("Input new task Description:");
+                string newName = Console.ReadLine();
 
-                bool isNumber = int.TryParse(userInput, out int taskId);
-
-                if (isNumber)
+                if (!string.IsNullOrWhiteSpace(newName))
                 {
-                    Console.WriteLine("Input new task Description:");
-                    string newName = Console.ReadLine();
-
-                    if (!string.IsNullOrWhiteSpace(newName))
-                    {
-                        TaskModel task = TaskStorage.GetById(taskId);
-                        task.Name = newName;
-                    }
-                    else
-                    {
-                        Console.WriteLine("Uncorrect description! Try again.");
-                    }
+                    TaskModel task = TaskStorage.GetById(taskId);
+                    task.Name = newName;
                 }
                 else
                 {
-                    Console.WriteLine("Wrong id!");
+                    ColorMessage.SetRedColor("Uncorrect description! Try again.");
                 }
             }
             else
             {
-                Console.WriteLine("Please login!");
+                ColorMessage.SetRedColor("Wrong id!");
             }
         }
     }

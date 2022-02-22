@@ -9,7 +9,8 @@ namespace CleanetCode.TodoList.CLI.Operations
 
         public void Execute()
         {
-            Console.WriteLine("Input task Id: ");
+            
+            ColorMessage.SetGreenColor("Input task Id: ");
             string userInput = Console.ReadLine();
 
             bool isNumber = int.TryParse(userInput, out int taskId);
@@ -26,12 +27,12 @@ namespace CleanetCode.TodoList.CLI.Operations
                 }
                 else
                 {
-                    Console.WriteLine("Uncorrect name! Try again.");
+                    ColorMessage.SetRedColor("Uncorrect name! Try again.");
                 }
             }
             else
             {
-                Console.WriteLine("Wrong id!");
+                ColorMessage.SetRedColor("Wrong id!");
             }
         }
     }

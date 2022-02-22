@@ -5,12 +5,9 @@ namespace CleanetCode.TodoList.CLI.Storages
 {
     public class FileStorage
     {
-        private static string UsersFilePath => @"D:\projects\Homeworks\CleanetCode.TodoList
-                                                   \CleanetCode.TodoList.CLI\CleanetCode.TodoList.CLI
-                                                   \Users.json";
-        public static string TasksFilePath => @"D:\projects\Homeworks\CleanetCode.TodoList
-                                           \CleanetCode.TodoList.CLI\CleanetCode.TodoList.CLI
-                                           \Tasks.json";
+        private static string UsersFilePath => @"D:\projects\Homeworks\CleanetCode.TodoList\CleanetCode.TodoList.CLI\CleanetCode.TodoList.CLI\Users.json";
+
+        public static string TasksFilePath => @"D:\projects\Homeworks\CleanetCode.TodoList\CleanetCode.TodoList.CLI\CleanetCode.TodoList.CLI\Tasks.json";
 
         static JsonSerializer serializer = new JsonSerializer();
 
@@ -35,37 +32,44 @@ namespace CleanetCode.TodoList.CLI.Storages
                 List<TaskModel> data = TaskStorage.GetAll();
                 serializer.Serialize(jw, data);
             }
-
         }
 
         public static void ReadIntoFile()
         {
             //Read users
-            using (StreamReader sr = File.OpenText(UsersFilePath))
+            if (File.Exists(UsersFilePath))
             {
-                string json = sr.ReadToEnd();
-                Dictionary<string, User> deserializeData = JsonConvert.DeserializeObject<Dictionary<string, User>>(json);
-                if (deserializeData != null)
+                using (StreamReader sr = File.OpenText(UsersFilePath))
                 {
-                    foreach (var data in deserializeData)
+                    string json = sr.ReadToEnd();
+                    Dictionary<string, User> deserializeData = JsonConvert.DeserializeObject<Dictionary<string, User>>(json);
+                    if (deserializeData != null)
                     {
-                        Dictionary<string, User> users = UserStorage.GetAll();
-                        users.TryAdd(data.Key, data.Value);
+                        foreach (var data in deserializeData)
+                        {
+                            UserStorage.Create(data.Value);
+                            //Dictionary<string, User> users = UserStorage.GetAll();
+                            //users.Add(data.Key, data.Value);
+                        }
                     }
                 }
             }
 
-            //Read tasks
-            using (StreamReader sr = File.OpenText(TasksFilePath))
+            //Read task
+            if (File.Exists(TasksFilePath))
             {
-                string json = sr.ReadToEnd();
-                List<TaskModel> deserializeData = JsonConvert.DeserializeObject<List<TaskModel>>(json);
-                if (deserializeData != null)
+                using (StreamReader sr = File.OpenText(TasksFilePath))
                 {
-                    foreach (var data in deserializeData)
+                    string json = sr.ReadToEnd();
+                    List<TaskModel> deserializeData = JsonConvert.DeserializeObject<List<TaskModel>>(json);
+                    if (deserializeData != null)
                     {
-                        List<TaskModel> tasks = TaskStorage.GetAll();
-                        tasks.Add(data);
+                        foreach (var data in deserializeData)
+                        {
+                            TaskStorage.ReadIntoFile(data);
+                            //List<TaskModel> tasks = TaskStorage.GetAll();
+                            //tasks.ReadIntoFile(data);
+                        }
                     }
                 }
             }

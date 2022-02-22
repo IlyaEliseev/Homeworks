@@ -6,14 +6,14 @@
         {
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine(message);
-            Console.ForegroundColor = ConsoleColor.Green;
+            Console.ResetColor();
         }
 
         public static void SetRedColor(string message)
         {
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine(message);
-            Console.ForegroundColor = ConsoleColor.Red;
+            Console.ResetColor();
         }
     }
 }

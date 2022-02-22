@@ -4,7 +4,7 @@ namespace CleanetCode.TodoList.CLI.Storages
 {
     public class TaskStorage
     {
-        public static readonly List<TaskModel> _tasks = new List<TaskModel>();
+        private static List<TaskModel> _tasks = new List<TaskModel>();
 
         public static bool Add(TaskModel task)
         {
@@ -14,7 +14,7 @@ namespace CleanetCode.TodoList.CLI.Storages
             }
 
             _tasks.Add(task);
-            task.InStorrageId += 1;
+            task.InStorrageId = _tasks.Count;
             return true;
         }
 
@@ -38,6 +38,11 @@ namespace CleanetCode.TodoList.CLI.Storages
             }
 
             return _tasks.FirstOrDefault(x => x.InStorrageId == taskId);
+        }
+
+        public static void ReadIntoFile(TaskModel task)
+        {
+            _tasks.Add(task);
         }
     }
 }

@@ -26,7 +26,7 @@ namespace CleanetCode.TodoList.CLI.Operations
             }
             else
             {
-                Console.WriteLine("Please login!");
+                ColorMessage.SetRedColor("Please login!");
             }
         }
     }

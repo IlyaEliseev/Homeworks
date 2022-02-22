@@ -9,6 +9,7 @@ namespace CleanetCode.TodoList.CLI.Operations
         public void Execute()
         {
             FileStorage.WriteToFile();
+            ColorMessage.SetGreenColor("You save data!");
         }
     }
 }

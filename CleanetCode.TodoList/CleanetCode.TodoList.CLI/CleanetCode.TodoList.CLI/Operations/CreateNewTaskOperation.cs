@@ -12,9 +12,9 @@ namespace CleanetCode.TodoList.CLI.Operations
         {
             if (UserSession.Login == true)
             {
-                Console.WriteLine("Input task name: ");
+                ColorMessage.SetGreenColor("Input task name: ");
                 string taskName = Console.ReadLine();
-                Console.WriteLine("Input task description: ");
+                ColorMessage.SetGreenColor("Input task description: ");
                 string taskDescription = Console.ReadLine();
 
                 TaskModel task = new TaskModel
@@ -29,14 +29,14 @@ namespace CleanetCode.TodoList.CLI.Operations
                 bool isCreatedSuccess = TaskStorage.Add(task);
                 if (!isCreatedSuccess)
                 {
-                    Console.WriteLine("Task create is not complited. Try again!");
+                    ColorMessage.SetRedColor("Task create is not complited. Try again!");
                 }
 
-                Console.WriteLine("Task created!");
+                ColorMessage.SetGreenColor("Task created!");
             }
             else
             {
-                Console.WriteLine("Please login!");
+                ColorMessage.SetRedColor("Please login!");
             }
         }
     }

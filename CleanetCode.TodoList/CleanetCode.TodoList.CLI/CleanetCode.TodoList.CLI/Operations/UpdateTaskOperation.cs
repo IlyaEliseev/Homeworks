@@ -10,7 +10,7 @@
             {
                 new UpdateNameTaskOperation(),
                 new UpdateDescriptionTaskOperation(),
-                new UpdateTaskStatusOperation()
+                new UncompliteTaskStatusOperation()
             };
 
             List<string> operationNames = new List<string>();

@@ -2,12 +2,7 @@
 {
     public class User
     {
-		public User()
-		{
-			Id = Guid.NewGuid();
-		}
-
-		public Guid Id { get; }
+		public Guid Id { get; init; }
 		public string Email { get; init; }
 	}
 }
