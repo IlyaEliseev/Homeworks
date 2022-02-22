@@ -22,7 +22,7 @@ namespace CleanetCode.TodoList.CLI.Operations
                     if (compliteTask != null)
                     {
                         compliteTask.DeletedDate = DateTime.Now;
-                        ColorMessage.SetGreenColor("Task deleted!");
+                        ColorMessage.SetGreenColor("Task delete!");
                     }
                     else
                     {

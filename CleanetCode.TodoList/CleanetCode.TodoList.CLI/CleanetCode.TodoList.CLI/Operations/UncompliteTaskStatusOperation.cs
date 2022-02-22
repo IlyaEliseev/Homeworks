@@ -18,7 +18,7 @@ namespace CleanetCode.TodoList.CLI.Operations
             {
                 TaskModel task = TaskStorage.GetById(taskId);
                 task.IsCompleted = false;
-                ColorMessage.SetGreenColor("Task uncomlite!");
+                ColorMessage.SetGreenColor("Task uncomplite!");
 
             }
             else

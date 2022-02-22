@@ -9,7 +9,6 @@ namespace CleanetCode.TodoList.CLI.Operations
 
         public void Execute()
         {
-            
             ColorMessage.SetGreenColor("Input task Id: ");
             string userInput = Console.ReadLine();
 
