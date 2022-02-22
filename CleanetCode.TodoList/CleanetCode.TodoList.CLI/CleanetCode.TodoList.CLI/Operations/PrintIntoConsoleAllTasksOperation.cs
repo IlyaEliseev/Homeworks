@@ -1,6 +1,5 @@
 ﻿using CleanetCode.TodoList.CLI.Models;
 using CleanetCode.TodoList.CLI.Storages;
-using System.Text;
 
 namespace CleanetCode.TodoList.CLI.Operations
 {
