@@ -11,7 +11,7 @@ namespace CleanetCode.TodoList.CLI.Operations
         {
             if (UserSession.Login == true)
             {
-                List<TaskModel> tasks = TaskStorage.GetAll();
+                List<TaskModel> tasks = TaskStorage.GetAllAtCurrentUser();
 
                 tasks.ForEach(task =>
                 {

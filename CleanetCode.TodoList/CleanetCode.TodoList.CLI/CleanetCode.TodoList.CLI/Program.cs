@@ -12,7 +12,8 @@ IOperation[] operations = new IOperation[]
 	new PrintIntoConsoleAllTasksOperation(),
 	new CompleteTaskOperation(),
 	new UpdateTaskOperation(),
-	new DeleteTaskOperation()
+	new DeleteTaskOperation(),
+	new SaveToFileOperation()
 };
 
 Menu menu = new Menu(operations);

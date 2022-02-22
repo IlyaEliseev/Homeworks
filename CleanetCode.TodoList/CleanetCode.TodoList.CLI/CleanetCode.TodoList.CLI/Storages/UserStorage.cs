@@ -16,5 +16,10 @@ namespace CleanetCode.TodoList.CLI.Storages
 		{
 			return _users.TryAdd(user.Email, user);
 		}
+
+		public static Dictionary<string, User> GetAll()
+        {
+			return _users;
+        }
 	}
 }

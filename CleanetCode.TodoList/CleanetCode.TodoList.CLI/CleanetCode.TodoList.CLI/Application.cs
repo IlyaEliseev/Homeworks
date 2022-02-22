@@ -1,4 +1,6 @@
-﻿namespace CleanetCode.TodoList.CLI
+﻿using CleanetCode.TodoList.CLI.Storages;
+
+namespace CleanetCode.TodoList.CLI
 {
 	internal class Application
 	{
@@ -7,6 +9,7 @@
 		public Application(Menu menu)
 		{
 			_menu = menu;
+			FileStorage.ReadIntoFile();
 		}
 
 		public void Run()
@@ -27,6 +30,7 @@
 				if (userInput != null && userInput.Trim().ToLower() == "q")
 				{
 					isUserQuit = true;
+
 				}
 
 				bool isNumber = int.TryParse(userInput, out int operationNumber);

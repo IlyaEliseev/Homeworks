@@ -9,36 +9,33 @@ namespace CleanetCode.TodoList.CLI.Operations
 
         public void Execute()
         {
-            Console.WriteLine("Input task Id: ");
-            string userInput = Console.ReadLine();
-
-            bool isNumber = int.TryParse(userInput, out int number);
-
             if (UserSession.Login == true)
             {
-                
-            }
-            else
-            {
-                Console.WriteLine("Please login!");
-            }
+                ColorMessage.SetGreenColor("Input task Id: ");
+                string userInput = Console.ReadLine();
 
+                bool isNumber = int.TryParse(userInput, out int number);
 
-            if (isNumber)
-            {
-                TaskModel compliteTask = TaskStorage.GetById(number);
-                if (compliteTask != null)
+                if (isNumber)
                 {
-                    compliteTask.IsCompleted = true;
+                    TaskModel compliteTask = TaskStorage.GetById(number);
+                    if (compliteTask != null)
+                    {
+                        compliteTask.IsCompleted = true;
+                    }
+                    else
+                    {
+                        ColorMessage.SetRedColor("Id is not found!");
+                    }
                 }
                 else
                 {
-                    Console.WriteLine("Id is not found!");
+                    ColorMessage.SetRedColor("Wrong id!");
                 }
             }
             else
             {
-                Console.WriteLine("Wrong id!");
+                ColorMessage.SetRedColor("Please login!");
             }
         }
     }

@@ -18,11 +18,16 @@ namespace CleanetCode.TodoList.CLI.Storages
             return true;
         }
 
-        public static List<TaskModel> GetAll()
+        public static List<TaskModel> GetAllAtCurrentUser()
         {
             return _tasks
                 .Where(x => x.UserId == UserSession.CurrentUser.Id)
                 .Where(x => x.DeletedDate == null).ToList();
+        }
+
+        public static List<TaskModel> GetAll()
+        {
+            return _tasks;
         }
 
         public static TaskModel? GetById(int taskId)
