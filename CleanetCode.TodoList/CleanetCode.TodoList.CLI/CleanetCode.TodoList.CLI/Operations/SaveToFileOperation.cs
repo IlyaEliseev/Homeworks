@@ -8,8 +8,15 @@ namespace CleanetCode.TodoList.CLI.Operations
 
         public void Execute()
         {
-            FileStorage.WriteToFile();
-            ColorMessage.SetGreenColor("You save data!");
+            if (UserSession.Login == true)
+            {
+                FileStorage.WriteToFile();
+                ColorMessage.SetGreenColor("You save data!");
+            }
+            else
+            {
+                ColorMessage.SetRedColor("Please login!");
+            }
         }
     }
 }

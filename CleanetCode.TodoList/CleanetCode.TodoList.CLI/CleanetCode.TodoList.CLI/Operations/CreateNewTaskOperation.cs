@@ -12,9 +12,9 @@ namespace CleanetCode.TodoList.CLI.Operations
         {
             if (UserSession.Login == true)
             {
-                ColorMessage.SetGreenColor("Input task name: ");
+                Console.Write("Input task name: ");
                 string taskName = Console.ReadLine();
-                ColorMessage.SetGreenColor("Input task description: ");
+                Console.Write("Input task description: ");
                 string taskDescription = Console.ReadLine();
 
                 TaskModel task = new TaskModel
@@ -32,7 +32,7 @@ namespace CleanetCode.TodoList.CLI.Operations
                     ColorMessage.SetRedColor("Task create is not complited. Try again!");
                 }
 
-                ColorMessage.SetGreenColor("Task created!");
+                ColorMessage.SetGreenColor("Task create!");
             }
             else
             {

@@ -9,14 +9,14 @@ namespace CleanetCode.TodoList.CLI.Operations
 
         public void Execute()
         {
-            ColorMessage.SetGreenColor("Input task Id: ");
+            Console.Write("Input task Id: ");
             string userInput = Console.ReadLine();
 
             bool isNumber = int.TryParse(userInput, out int taskId);
 
-            if (isNumber)
+            if (isNumber && TaskStorage.GetAll().Count >= taskId)
             {
-                ColorMessage.SetGreenColor("Input new task Description:");
+                Console.Write("Input new task Description: ");
                 string newName = Console.ReadLine();
 
                 if (!string.IsNullOrWhiteSpace(newName))

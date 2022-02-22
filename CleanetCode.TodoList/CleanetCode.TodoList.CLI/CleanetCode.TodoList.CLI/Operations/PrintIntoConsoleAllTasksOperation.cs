@@ -1,5 +1,6 @@
 ﻿using CleanetCode.TodoList.CLI.Models;
 using CleanetCode.TodoList.CLI.Storages;
+using System.Text;
 
 namespace CleanetCode.TodoList.CLI.Operations
 {
@@ -15,13 +16,11 @@ namespace CleanetCode.TodoList.CLI.Operations
 
                 tasks.ForEach(task =>
                 {
-                    Console.WriteLine();
                     Console.WriteLine($"Id: {task.InStorrageId}" +
                                       $" Name: {task.Name} " +
                                       $" Description: {task.Description}" +
                                       $" Task complite status: {task.IsCompleted}" +
                                       $" Create time: {task.CreatedDate}");
-                    Console.WriteLine();
                 });
             }
             else

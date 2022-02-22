@@ -11,14 +11,14 @@ namespace CleanetCode.TodoList.CLI.Operations
         {
             if (UserSession.Login == true)
             {
-                ColorMessage.SetGreenColor("Input task Id: ");
+                Console.Write("Input task Id: ");
                 string userInput = Console.ReadLine();
 
-                bool isNumber = int.TryParse(userInput, out int number);
+                bool isNumber = int.TryParse(userInput, out int taskId);
 
-                if (isNumber)
+                if (isNumber && TaskStorage.GetAll().Count >= taskId)
                 {
-                    TaskModel compliteTask = TaskStorage.GetById(number);
+                    TaskModel compliteTask = TaskStorage.GetById(taskId);
                     if (compliteTask != null)
                     {
                         compliteTask.DeletedDate = DateTime.Now;

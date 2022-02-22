@@ -9,7 +9,7 @@ namespace CleanetCode.TodoList.CLI.Operations
 
 		public void Execute()
 		{
-			ColorMessage.SetGreenColor("Input your email:");
+            Console.Write("Input your email: ");
 			string? email = Console.ReadLine();
 
 			User newUser = new User

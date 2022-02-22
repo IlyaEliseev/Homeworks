@@ -6,28 +6,35 @@
 
         public void Execute()
         {
-            IOperation[] _operations = new IOperation[]
+            if (UserSession.Login == true)
             {
+                IOperation[] _operations = new IOperation[]
+                {
                 new UpdateNameTaskOperation(),
                 new UpdateDescriptionTaskOperation(),
                 new UncompliteTaskStatusOperation()
-            };
+                };
 
-            List<string> operationNames = new List<string>();
+                List<string> operationNames = new List<string>();
 
-            for (int i = 0; i < _operations.Length; i++)
-            {
-                operationNames.Add($"{i} - {_operations[i].Name}");
+                for (int i = 0; i < _operations.Length; i++)
+                {
+                    operationNames.Add($"{i} - {_operations[i].Name}");
+                }
+
+                Console.WriteLine(string.Join("\n", operationNames));
+                Console.Write("Input operaiton number: ");
+
+                string userInput = Console.ReadLine();
+                bool isNumber = int.TryParse(userInput, out int operationNumber);
+                if (isNumber)
+                {
+                    _operations[operationNumber].Execute();
+                }
             }
-
-            Console.WriteLine(string.Join("\n", operationNames));
-            Console.Write("Input operaiton number: ");
-
-            string userInput = Console.ReadLine();
-            bool isNumber = int.TryParse(userInput, out int operationNumber);
-            if (isNumber)
+            else
             {
-                _operations[operationNumber].Execute();
+                ColorMessage.SetRedColor("Please login!");
             }
         }
     }

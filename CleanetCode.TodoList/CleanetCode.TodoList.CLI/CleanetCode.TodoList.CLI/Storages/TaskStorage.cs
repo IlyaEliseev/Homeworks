@@ -37,7 +37,7 @@ namespace CleanetCode.TodoList.CLI.Storages
                 Console.WriteLine("Task is not found!");
             }
 
-            return _tasks.FirstOrDefault(x => x.InStorrageId == taskId);
+            return _tasks.Where(x => x.UserId == UserSession.CurrentUser.Id).FirstOrDefault(x => x.InStorrageId == taskId);
         }
 
         public static void ReadIntoFile(TaskModel task)

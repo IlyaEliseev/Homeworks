@@ -62,7 +62,29 @@
     "IsCompleted": false,
     "CreatedDate": "2022-02-22T15:25:21.1851218+03:00",
     "UpdatedDate": "0001-01-01T00:00:00",
-    "DeletedDate": null,
+    "DeletedDate": "2022-02-22T16:41:36.181786+03:00",
     "UserId": "b6776cba-4b58-44ca-8828-3e4da45949ad"
+  },
+  {
+    "InStorrageId": 7,
+    "Id": "83d67776-ae44-45b2-b1c2-fecf35327c14",
+    "Name": "123",
+    "Description": "123",
+    "IsCompleted": false,
+    "CreatedDate": "2022-02-22T16:25:12.3251331+03:00",
+    "UpdatedDate": "0001-01-01T00:00:00",
+    "DeletedDate": "2022-02-22T16:39:48.025272+03:00",
+    "UserId": "76231d03-b867-4420-a4b8-fe3b2cc3fe77"
+  },
+  {
+    "InStorrageId": 8,
+    "Id": "6c9606e5-4f3d-46af-81d2-ac90e81adb08",
+    "Name": "12341234",
+    "Description": "123124124",
+    "IsCompleted": false,
+    "CreatedDate": "2022-02-22T16:25:22.3646385+03:00",
+    "UpdatedDate": "0001-01-01T00:00:00",
+    "DeletedDate": "2022-02-22T16:39:27.4100979+03:00",
+    "UserId": "76231d03-b867-4420-a4b8-fe3b2cc3fe77"
   }
 ]
