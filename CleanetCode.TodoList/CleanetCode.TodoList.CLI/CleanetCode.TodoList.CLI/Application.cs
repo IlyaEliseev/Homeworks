@@ -22,7 +22,6 @@ namespace CleanetCode.TodoList.CLI
 				operationNames.Add("q - выйти из программы");
 				operationNames.AddRange(_menu.GetOperationNames());
 
-
 				Console.WriteLine(string.Join("\n", operationNames));
 				Console.Write("Введите номер операции: ");
 
