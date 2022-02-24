@@ -1,13 +1,14 @@
 ﻿using CleanetCode.TodoList.CLI.Models;
+using CleanetCode.TodoList.CLI.Storages;
 using Newtonsoft.Json;
 
-namespace CleanetCode.TodoList.CLI.Storages
+namespace CleanetCode.TodoList.CLI
 {
-    public class FileStorage
+    public class FileService
     {
         private static string UsersFilePath => @"D:\projects\Homeworks\CleanetCode.TodoList\CleanetCode.TodoList.CLI\CleanetCode.TodoList.CLI\Users.json";
 
-        public static string TasksFilePath => @"D:\projects\Homeworks\CleanetCode.TodoList\CleanetCode.TodoList.CLI\CleanetCode.TodoList.CLI\Tasks.json";
+        private static string TasksFilePath => @"D:\projects\Homeworks\CleanetCode.TodoList\CleanetCode.TodoList.CLI\CleanetCode.TodoList.CLI\Tasks.json";
 
         static JsonSerializer serializer = new JsonSerializer();
 

@@ -9,7 +9,7 @@ namespace CleanetCode.TodoList.CLI
 		public Application(Menu menu)
 		{
 			_menu = menu;
-			FileStorage.ReadIntoFile();
+			FileService.ReadIntoFile();
 		}
 
 		public void Run()
