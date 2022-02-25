@@ -22,21 +22,21 @@ namespace CleanetCode.TodoList.CLI.Operations
                     if (compliteTask != null)
                     {
                         compliteTask.DeletedDate = DateTime.Now;
-                        ColorMessage.SetGreenColor("Task delete!");
+                        ColorMessage.SetGreenColor("Task delete");
                     }
                     else
                     {
-                        ColorMessage.SetRedColor("Id is not found!");
+                        ColorMessage.SetRedColor("Id is not found");
                     }
                 }
                 else
                 {
-                    ColorMessage.SetRedColor("Wrong id!");
+                    ColorMessage.SetRedColor("Wrong id");
                 }
             }
             else
             {
-                ColorMessage.SetRedColor("Please login!");
+                ColorMessage.SetRedColor("Please login");
             }
         }
     }

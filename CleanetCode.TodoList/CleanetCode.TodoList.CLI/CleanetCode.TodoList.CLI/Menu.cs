@@ -28,6 +28,7 @@ namespace CleanetCode.TodoList.CLI
 		{
 			if (operationNumber < 0 || operationNumber >= _operations.Length)
 			{
+				ColorMessage.SetRedColor("Operation does not exist");
 				return;
 			}
 

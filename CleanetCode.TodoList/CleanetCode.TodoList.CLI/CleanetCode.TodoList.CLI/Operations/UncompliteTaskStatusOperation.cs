@@ -18,11 +18,11 @@ namespace CleanetCode.TodoList.CLI.Operations
             {
                 TaskModel task = TaskStorage.GetById(taskId);
                 task.IsCompleted = false;
-                ColorMessage.SetGreenColor("Task uncomplite!");
+                ColorMessage.SetGreenColor("Task uncomplite");
             }
             else
             {
-                ColorMessage.SetRedColor("Wrong id!");
+                ColorMessage.SetRedColor("Wrong id");
             }
         }
     }

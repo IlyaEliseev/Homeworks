@@ -23,15 +23,16 @@ namespace CleanetCode.TodoList.CLI.Operations
                 {
                     TaskModel task = TaskStorage.GetById(taskId);
                     task.Name = newName;
+                    ColorMessage.SetGreenColor("You change name");
                 }
                 else
                 {
-                    ColorMessage.SetRedColor("Uncorrect name! Try again.");
+                    ColorMessage.SetRedColor("Name should not be null or white space! Try again");
                 }
             }
             else
             {
-                ColorMessage.SetRedColor("Wrong id!");
+                ColorMessage.SetRedColor("Wrong id");
             }
         }
     }

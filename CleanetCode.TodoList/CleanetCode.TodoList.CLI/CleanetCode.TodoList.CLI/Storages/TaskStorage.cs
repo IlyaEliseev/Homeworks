@@ -34,7 +34,7 @@ namespace CleanetCode.TodoList.CLI.Storages
         {
             if (taskId == default)
             {
-                Console.WriteLine("Task is not found!");
+                Console.WriteLine("Task is not found");
             }
 
             return _tasks.Where(x => x.UserId == UserSession.CurrentUser.Id).FirstOrDefault(x => x.InStorrageId == taskId);

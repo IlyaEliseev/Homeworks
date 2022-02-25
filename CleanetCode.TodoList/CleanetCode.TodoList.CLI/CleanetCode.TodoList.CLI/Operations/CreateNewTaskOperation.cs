@@ -14,29 +14,37 @@ namespace CleanetCode.TodoList.CLI.Operations
             {
                 Console.Write("Input task name: ");
                 string taskName = Console.ReadLine();
+
                 Console.Write("Input task description: ");
                 string taskDescription = Console.ReadLine();
 
-                TaskModel task = new TaskModel
+                if (!string.IsNullOrWhiteSpace(taskName) && !string.IsNullOrWhiteSpace(taskName))
                 {
-                    Id = Guid.NewGuid(),
-                    Name = taskName,
-                    Description = taskDescription,
-                    UserId = UserSession.CurrentUser.Id,
-                    CreatedDate = DateTime.Now
-                };
+                    TaskModel task = new TaskModel
+                    {
+                        Id = Guid.NewGuid(),
+                        Name = taskName,
+                        Description = taskDescription,
+                        UserId = UserSession.CurrentUser.Id,
+                        CreatedDate = DateTime.Now
+                    };
 
-                bool isCreatedSuccess = TaskStorage.Add(task);
-                if (!isCreatedSuccess)
-                {
-                    ColorMessage.SetRedColor("Task create is not complited. Try again!");
+                    bool isCreatedSuccess = TaskStorage.Add(task);
+                    if (!isCreatedSuccess)
+                    {
+                        ColorMessage.SetRedColor("Task create is not complited. Try again");
+                    }
+
+                    ColorMessage.SetGreenColor("Task create");
                 }
-
-                ColorMessage.SetGreenColor("Task create!");
+                else
+                {
+                    ColorMessage.SetRedColor("Name and description should not be null or white space");
+                }
             }
             else
             {
-                ColorMessage.SetRedColor("Please login!");
+                ColorMessage.SetRedColor("Please login");
             }
         }
     }

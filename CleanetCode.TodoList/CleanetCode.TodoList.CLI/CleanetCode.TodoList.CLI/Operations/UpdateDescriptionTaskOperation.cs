@@ -17,21 +17,22 @@ namespace CleanetCode.TodoList.CLI.Operations
             if (isNumber && TaskStorage.GetAll().Count >= taskId)
             {
                 Console.Write("Input new task Description: ");
-                string newName = Console.ReadLine();
+                string newDescription = Console.ReadLine();
 
-                if (!string.IsNullOrWhiteSpace(newName))
+                if (!string.IsNullOrWhiteSpace(newDescription))
                 {
                     TaskModel task = TaskStorage.GetById(taskId);
-                    task.Name = newName;
+                    task.Description = newDescription;
+                    ColorMessage.SetGreenColor("You change description");
                 }
                 else
                 {
-                    ColorMessage.SetRedColor("Uncorrect description! Try again.");
+                    ColorMessage.SetRedColor("Description should not be null or white space! Try again");
                 }
             }
             else
             {
-                ColorMessage.SetRedColor("Wrong id!");
+                ColorMessage.SetRedColor("Wrong id");
             }
         }
     }

@@ -25,17 +25,17 @@ namespace CleanetCode.TodoList.CLI.Operations
                     }
                     else
                     {
-                        ColorMessage.SetRedColor("Id is not found!");
+                        ColorMessage.SetRedColor("Id is not found");
                     }
                 }
                 else
                 {
-                    ColorMessage.SetRedColor("Wrong id!");
+                    ColorMessage.SetRedColor("Wrong id");
                 }
             }
             else
             {
-                ColorMessage.SetRedColor("Please login!");
+                ColorMessage.SetRedColor("Please login");
             }
         }
     }

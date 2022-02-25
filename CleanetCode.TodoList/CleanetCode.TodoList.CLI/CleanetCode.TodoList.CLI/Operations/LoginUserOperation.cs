@@ -11,17 +11,18 @@ namespace CleanetCode.TodoList.CLI.Operations
 		{
             Console.Write("Input youre email: ");
 			string? email = Console.ReadLine();
+
 			User? user = UserStorage.Get(email);
 
 			if (user != null)
 			{
 				UserSession.CurrentUser = user;
 				UserSession.Login = true;
-				ColorMessage.SetGreenColor("You login!");
+				ColorMessage.SetGreenColor("You login");
 			}
 			else
             {
-				ColorMessage.SetRedColor("User not found!");
+				ColorMessage.SetRedColor("User not found");
             }
 		}
 	}

@@ -6,16 +6,19 @@ namespace CleanetCode.TodoList.CLI
 {
     public class FileService
     {
-        private static string UsersFilePath => @"D:\projects\Homeworks\CleanetCode.TodoList\CleanetCode.TodoList.CLI\CleanetCode.TodoList.CLI\Users.json";
+        private static readonly string _workingDirectory = Environment.CurrentDirectory;
+        private static readonly string _projectDirectory = Directory.GetParent(_workingDirectory).Parent.Parent.FullName;
 
-        private static string TasksFilePath => @"D:\projects\Homeworks\CleanetCode.TodoList\CleanetCode.TodoList.CLI\CleanetCode.TodoList.CLI\Tasks.json";
+        private static readonly string _usersFileName = "Users.json";
+        private static readonly string _tasksFileName = "Tasks.json";
+
+        private static readonly string _usersFilePath = Path.GetFullPath(_usersFileName, _projectDirectory);
+        private static readonly string  _tasksFilePath = Path.GetFullPath(_tasksFileName, _projectDirectory);
 
         static JsonSerializer serializer = new JsonSerializer();
-
-        public static void WriteToFile()
+        public static void WriteUsersToFile()
         {
-            //write users
-            using (StreamWriter sw = new StreamWriter(UsersFilePath))
+            using (StreamWriter sw = new StreamWriter(_usersFilePath))
             using (JsonWriter jw = new JsonTextWriter(sw))
             {
 
@@ -23,9 +26,11 @@ namespace CleanetCode.TodoList.CLI
                 Dictionary<string, User> data = UserStorage.GetAll();
                 serializer.Serialize(jw, data);
             }
+        }
 
-            //write tasks
-            using (StreamWriter sw = new StreamWriter(TasksFilePath))
+        public static void WriteTasksToFile()
+        {
+            using (StreamWriter sw = new StreamWriter(_tasksFilePath))
             using (JsonWriter jw = new JsonTextWriter(sw))
             {
 
@@ -35,12 +40,11 @@ namespace CleanetCode.TodoList.CLI
             }
         }
 
-        public static void ReadIntoFile()
+        public static void ReadUsersIntoFile()
         {
-            //Read users
-            if (File.Exists(UsersFilePath))
+            if (File.Exists(_usersFilePath))
             {
-                using (StreamReader sr = File.OpenText(UsersFilePath))
+                using (StreamReader sr = File.OpenText(_usersFilePath))
                 {
                     string json = sr.ReadToEnd();
                     Dictionary<string, User> deserializeData = JsonConvert.DeserializeObject<Dictionary<string, User>>(json);
@@ -53,11 +57,13 @@ namespace CleanetCode.TodoList.CLI
                     }
                 }
             }
+        }
 
-            //Read task
-            if (File.Exists(TasksFilePath))
+        public static void ReadTasksIntoFile()
+        {
+            if (File.Exists(_tasksFilePath))
             {
-                using (StreamReader sr = File.OpenText(TasksFilePath))
+                using (StreamReader sr = File.OpenText(_tasksFilePath))
                 {
                     string json = sr.ReadToEnd();
                     List<TaskModel> deserializeData = JsonConvert.DeserializeObject<List<TaskModel>>(json);

@@ -10,12 +10,13 @@ namespace CleanetCode.TodoList.CLI.Operations
         {
             if (UserSession.Login == true)
             {
-                FileService.WriteToFile();
-                ColorMessage.SetGreenColor("You save data!");
+                FileService.WriteUsersToFile();
+                FileService.WriteTasksToFile();
+                ColorMessage.SetGreenColor("You save data");
             }
             else
             {
-                ColorMessage.SetRedColor("Please login!");
+                ColorMessage.SetRedColor("Please login");
             }
         }
     }

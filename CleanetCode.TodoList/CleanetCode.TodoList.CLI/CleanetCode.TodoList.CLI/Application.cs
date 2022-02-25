@@ -9,7 +9,8 @@ namespace CleanetCode.TodoList.CLI
 		public Application(Menu menu)
 		{
 			_menu = menu;
-			FileService.ReadIntoFile();
+			FileService.ReadUsersIntoFile();
+			FileService.ReadTasksIntoFile();
 		}
 
 		public void Run()
@@ -19,11 +20,11 @@ namespace CleanetCode.TodoList.CLI
 			while (!isUserQuit)
 			{
 				List<string> operationNames = new List<string>();
-				operationNames.Add("q - выйти из программы");
+				operationNames.Add("q - exit the program");
 				operationNames.AddRange(_menu.GetOperationNames());
 
 				Console.WriteLine(string.Join("\n", operationNames));
-				Console.Write("Введите номер операции: ");
+				Console.Write("Input operation number: ");
 
 				string? userInput = Console.ReadLine();
 				if (userInput != null && userInput.Trim().ToLower() == "q")
@@ -37,6 +38,10 @@ namespace CleanetCode.TodoList.CLI
 				{
 					_menu.Enter(operationNumber);
 				}
+                else
+                {
+					ColorMessage.SetRedColor("You input not number");
+                }
 			}
 		}
 	}
