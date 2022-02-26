@@ -10,9 +10,9 @@
             {
                 IOperation[] _operations = new IOperation[]
                 {
-                new UpdateNameTaskOperation(),
-                new UpdateDescriptionTaskOperation(),
-                new UncompliteTaskStatusOperation()
+                    new UpdateNameTaskOperation(),
+                    new UpdateDescriptionTaskOperation(),
+                    new UncompliteTaskStatusOperation()
                 };
 
                 List<string> operationNames = new List<string>();
