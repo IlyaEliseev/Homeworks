@@ -27,7 +27,7 @@ namespace CleanetCode.TodoList.CLI.Operations
                 }
                 else
                 {
-                    ColorMessage.SetRedColor("Name should not be null or white space! Try again");
+                    ColorMessage.SetRedColor("Name should not be null or white space");
                 }
             }
             else
