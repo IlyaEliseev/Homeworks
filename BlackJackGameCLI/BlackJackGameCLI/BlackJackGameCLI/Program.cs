@@ -3,4 +3,6 @@ using BlackJackGameCLI;
 
 Shoe shoe = new();
 shoe.FillShoe();
+
+Card Card = Shoe.GetCard();
 Console.ReadKey();
