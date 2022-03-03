@@ -35,8 +35,7 @@ namespace BlackJackGameCLI
                 {
                     if (answer == "y" && player.IsPass != true)
                     {
-                        player.TakeCart();
-                         
+                        player.TakeCard();
                     }
                     else
                     {

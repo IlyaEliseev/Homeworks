@@ -10,7 +10,7 @@
 
         public override bool IsPass { get; set; }
 
-        public override void TakeCart()
+        public override void TakeCard()
         {
             var card = Shoe.GetCard();
             AddCardInHand(card);

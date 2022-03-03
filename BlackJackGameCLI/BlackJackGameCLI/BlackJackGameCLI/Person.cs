@@ -2,48 +2,37 @@
 {
     public abstract class Person
     {
-        public  int Total { get; set; }
-        public string Name { get; set; }
+        private protected int Total { get; set; }
+        private protected string Name { get; set; }
+        public abstract bool IsPass { get; set; }
 
         private readonly List<Card> _hand = new List<Card>();
 
         private readonly List<string> _handInformation = new List<string>();
 
-        public int CalculateTotal(Card card)
+        private protected int CalculateTotal(Card card)
         {
             return Total += card.Value;
         }
 
-        public abstract bool IsPass { get; set; }
-
-        public bool SayPass()
+        private protected bool SayPass()
         {
             return IsPass = true;
         }
 
-        public void AddCardInHand(Card card)
+        private protected void AddCardInHand(Card card)
         {
             _hand.Add(card);    
         }
 
-        //public  List<string> GetHand()
-        //{
-        //    return _handInformation;
-        //}
-
-        public  bool GetHandInformation(Card card)
+        private protected bool GetHandInformation(Card card)
         {
             _handInformation.Add(card.Index);
 
             return true;
         }
 
-        public int GetTotal()
-        {
-            return Total;
-        }
-
-        public abstract void TakeCart();
+        public abstract void TakeCard();
 
         public void ShowHand()
         {
