@@ -29,7 +29,7 @@
         {
             Random random = new Random();
             var aviableShoe = shoe.Where(x => x.IsAviable == true).ToList();
-            var card = aviableShoe[random.Next(0, shoe.Count)];
+            var card = aviableShoe[random.Next(0, aviableShoe.Count)];
             card.IsAviable = false;
             return card;
         }

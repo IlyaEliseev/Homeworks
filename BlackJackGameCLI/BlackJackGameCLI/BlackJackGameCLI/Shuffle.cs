@@ -1,5 +1,4 @@
 ﻿using BlackJackGameCLI.Persons;
-using System.Text;
 
 namespace BlackJackGameCLI
 {
@@ -10,7 +9,7 @@ namespace BlackJackGameCLI
             new HumanPlayer(),
             new ComputerPlayer(),
             new ComputerPlayer(),
-            new ComputerPlayer()
+            new Croupier()
         };
 
         bool isShuffleEnd = false;
@@ -19,7 +18,7 @@ namespace BlackJackGameCLI
         {
             foreach (var player in players)
             {
-                Console.WriteLine(string.Join(" ", player.GetHand()));
+                player.ShowHand();
             }
         }
 
@@ -36,15 +35,16 @@ namespace BlackJackGameCLI
                 {
                     if (answer == "y" && player.IsPass != true)
                     {
-                        player.AddCardInHand();
+                        player.TakeCart();
                          
                     }
-                    //player.GetHandInformation();
-                    //player.GetHand().ForEach(hand =>
-                    //{
-                    //    Console.Write($"{hand.Index} {hand.Value}");
-                    //});
+                    else
+                    {
+                        isShuffleEnd = true;
+                        Console.WriteLine("End");
+                    }
                 }
+
                 ShowHands();
             }
         }

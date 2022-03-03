@@ -5,43 +5,17 @@
         public HumanPlayer()
         {
             IsPass = false;
+            Name = "Player: ";
         }
 
         public override bool IsPass { get; set; }
-        private bool isTakeCard = false;
-        
 
-        private readonly List<Card> _hand = new List<Card>();
-        private readonly List<string> _handInformation = new List<string>();
-
-        public override bool SayPass()
-        {
-            return IsPass = true;
-        }
-
-        public override bool TakeCard()
-        {
-            return isTakeCard = true;
-        }
-
-        public override void AddCardInHand()
+        public override void TakeCart()
         {
             var card = Shoe.GetCard();
-            _hand.Add(card);
+            AddCardInHand(card);
             GetHandInformation(card);
             CalculateTotal(card);
-        }
-
-        public override List<string> GetHand()
-        {
-            return _handInformation;
-        }
-
-        public override List<string> GetHandInformation(Card card)
-        {
-            _handInformation.Add(card.Index);
-
-            return _handInformation;
         }
     }
 }

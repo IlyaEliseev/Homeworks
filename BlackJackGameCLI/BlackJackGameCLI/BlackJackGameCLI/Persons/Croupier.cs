@@ -1,20 +1,18 @@
 ﻿namespace BlackJackGameCLI.Persons
 {
-    public class ComputerPlayer : Person
+    public class Croupier : Person
     {
-        private static int _playerCount = 1;
-
-        public ComputerPlayer(): base()
+        public Croupier()
         {
             IsPass = false;
-            Name = $"Computer {_playerCount++}: ";
+            Name = "Crouper: ";
         }
-        
-        public override bool IsPass { get; set; }
+
+        public override bool IsPass { get ; set ; }
 
         public override void TakeCart()
         {
-            if (Total <= 18)
+            if (Total <= 15)
             {
                 var card = Shoe.GetCard();
                 AddCardInHand(card);
