@@ -1,15 +1,15 @@
 ﻿namespace BlackJackGameCLI.Persons
 {
-    public class HumanPlayer : Person
+    public class ComputerPlayer : Person
     {
-        public HumanPlayer()
+        public ComputerPlayer()
         {
             IsPass = false;
         }
 
         public override bool IsPass { get; set; }
         private bool isTakeCard = false;
-        
+        //public int Total { get; set; }
 
         private readonly List<Card> _hand = new List<Card>();
         private readonly List<string> _handInformation = new List<string>();
@@ -18,7 +18,7 @@
         {
             return IsPass = true;
         }
-
+        
         public override bool TakeCard()
         {
             return isTakeCard = true;
@@ -26,10 +26,17 @@
 
         public override void AddCardInHand()
         {
-            var card = Shoe.GetCard();
-            _hand.Add(card);
-            GetHandInformation(card);
-            CalculateTotal(card);
+            if (Total <= 18)
+            {
+                var card = Shoe.GetCard();
+                _hand.Add(card);
+                GetHandInformation(card);
+                CalculateTotal(card);
+            }
+            else
+            {
+                SayPass();
+            }
         }
 
         public override List<string> GetHand()

@@ -1,8 +1,5 @@
-﻿// See https://aka.ms/new-console-template for more information
-using BlackJackGameCLI;
+﻿using BlackJackGameCLI;
 
-Shoe shoe = new();
-shoe.FillShoe();
-
-Card Card = Shoe.GetCard();
+Shuffle shuffle = new Shuffle();
+shuffle.Start();
 Console.ReadKey();
