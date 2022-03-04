@@ -3,6 +3,7 @@
     public abstract class Person
     {
         private protected int _total;
+        public string GameStatus { get; set; }
         public string Name { get; private protected set; }
         public abstract bool IsPass { get; protected set; }
 
@@ -42,6 +43,15 @@
         public int GetTotal()
         {
             return _total;
+        }
+
+        public void ClearAll()
+        {
+            _hand.Clear();
+            _handInformation.Clear();
+            _total = 0;
+            IsPass = false;
+            GameStatus = null;
         }
     }
 }
