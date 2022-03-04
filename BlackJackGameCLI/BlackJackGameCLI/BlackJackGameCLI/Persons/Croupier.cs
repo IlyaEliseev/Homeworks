@@ -5,7 +5,7 @@
         public Croupier()
         {
             IsPass = false;
-            Name = "Crouper";
+            Name = Roll.Croupier.ToString();
         }
 
         public override bool IsPass { get ; protected set; }

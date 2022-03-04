@@ -12,7 +12,6 @@ namespace BlackJackGameCLI
             new Croupier()
         };
 
-        bool isShuffleEnd = false;
 
         private void ShowHands()
         {
@@ -24,11 +23,19 @@ namespace BlackJackGameCLI
 
         private void CalculatePoints()
         {
-            foreach(var player in players)
+            
+            if (players.All(x => x.IsPass == true))
             {
-                player.ShowHand();
+                Person cropier = players
+                .FirstOrDefault(x => x.Name == Roll.Croupier.ToString());
+                foreach (var player in players)
+                {
+                    Console.WriteLine("1");
+                }
             }
         }
+
+        bool isShuffleEnd = false;
 
         public void Start()
         {
@@ -37,32 +44,37 @@ namespace BlackJackGameCLI
             while (!isShuffleEnd)
             {
                 Console.Write("Give a card?: ");
-                string answer = Console.ReadLine();
+                string answer = Console.ReadLine().Trim().ToLower();
 
                 if (answer == "y")
                 {
-                    Person player = players
-                            .Where(x => x.Name == "Player")
+                    Person humanPlayer = players
+                            .Where(x => x.Name == Roll.Player.ToString())
                             .FirstOrDefault();
-                    if (player != null && player.GetTotal() <= 21)
+
+                    if (humanPlayer != null && humanPlayer.GetTotal() <= 21)
                     {
-                        player.TakeCard();
+                        humanPlayer.TakeCard();
                     }
                 }
                 if (answer == "n")
                 {
-                    Person player = players
-                        .Where(x => x.Name == "Player")
+                    Person humanPlayer = players
+                        .Where(x => x.Name == Roll.Player.ToString())
                         .FirstOrDefault();
-                    player.SayPass();
+
+                    humanPlayer.SayPass();
                 }
 
-                foreach (var player in players.Where(x => x.IsPass == false).Where(x => x.Name != "Player"))
+                foreach (var player in players
+                    .Where(x => x.IsPass == false)
+                    .Where(x => x.Name != Roll.Player.ToString()))
                 {
                     player.TakeCard();
                 }
 
                 ShowHands();
+                CalculatePoints();
             }
         }
     }

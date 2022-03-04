@@ -7,7 +7,7 @@
         public ComputerPlayer(): base()
         {
             IsPass = false;
-            Name = $"Computer {_playerCount++}";
+            Name = $"{Roll.Computer} {_playerCount++}";
         }
         
         public override bool IsPass { get; protected set; }

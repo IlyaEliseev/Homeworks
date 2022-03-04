@@ -5,7 +5,7 @@
         public HumanPlayer()
         {
             IsPass = false;
-            Name = "Player";
+            Name = Roll.Player.ToString();
         }
 
         public override bool IsPass { get; protected set; }
