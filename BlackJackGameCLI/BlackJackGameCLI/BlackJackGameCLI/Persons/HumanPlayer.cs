@@ -8,8 +8,6 @@
             Name = Roll.Player.ToString();
         }
 
-        public override bool IsPass { get; protected set; }
-
         public override void TakeCard()
         {
             var card = Shoe.GetCard();

@@ -8,8 +8,6 @@
             Name = Roll.Croupier.ToString();
         }
 
-        public override bool IsPass { get ; protected set; }
-
         public override void TakeCard()
         {
             if (_total <= 15)

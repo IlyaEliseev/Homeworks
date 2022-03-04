@@ -4,14 +4,12 @@
     {
         private static int _playerCount = 1;
 
-        public ComputerPlayer(): base()
+        public ComputerPlayer()
         {
             IsPass = false;
             Name = $"{Roll.Computer} {_playerCount++}";
         }
         
-        public override bool IsPass { get; protected set; }
-
         public override void TakeCard()
         {
             if (_total <= 18)

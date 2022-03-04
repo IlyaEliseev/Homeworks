@@ -26,28 +26,33 @@ namespace BlackJackGameCLI
             {
                 Person cropier = players
                 .FirstOrDefault(x => x.Name == Roll.Croupier.ToString());
-                foreach (var player in players.Where(x => x.Name != Roll.Croupier.ToString()))
-                {
-                    if (player.GetTotal() > 21)
-                    {
-                        player.GameStatus = "Loser";
-                    }
-                    if (player.GetTotal() > cropier.GetTotal() && player.GetTotal() <= 21 && cropier.GetTotal() > 21)
-                    {
-                        player.GameStatus = "Winner";
-                    }
-                    if (cropier.GetTotal() > player.GetTotal() && cropier.GetTotal() <= 21)
-                    {
-                        player.GameStatus = "Loser";
 
+                if (cropier != null)
+                {
+                    foreach (var player in players.Where(x => x.Name != Roll.Croupier.ToString()))
+                    {
+                        if (player.GetTotal() > 21)
+                        {
+                            player.GameStatus = Status.Loser.ToString();
+                        }
+                        if (cropier.GetTotal() > player.GetTotal() && cropier.GetTotal() <= 21)
+                        {
+                            player.GameStatus = Status.Loser.ToString();
+                        }
+                        if (player.GetTotal() <= 21)
+                        {
+                            player.GameStatus = Status.Winner.ToString();
+                        }
+
+                        Console.WriteLine($"{player.Name}: {player.GameStatus}");
                     }
-                    Console.WriteLine($"{player.Name}: {player.GameStatus}");
                 }
             }
         }
 
         bool isShuffleEnd = false;
         bool isPass = false;
+
         public void Start()
         {
             Shoe.FillShoe();
@@ -56,7 +61,7 @@ namespace BlackJackGameCLI
             {
                 do
                 {
-                    Console.Write("Give a card?: ");
+                    Console.Write("Give a card? y/n: ");
                     string answer = Console.ReadLine().Trim().ToLower();
 
                     if (answer == "y")
@@ -94,7 +99,7 @@ namespace BlackJackGameCLI
                 
                 DefineWinner();
                 
-                Console.Write("Play again?: ");
+                Console.Write("Play again? y/n: ");
                 string userInput = Console.ReadLine().ToLower().Trim();
 
                 if (userInput == "y")

@@ -5,7 +5,7 @@
         private protected int _total;
         public string GameStatus { get; set; }
         public string Name { get; private protected set; }
-        public abstract bool IsPass { get; protected set; }
+        public bool IsPass { get; protected set; }
 
         private readonly List<Card> _hand = new List<Card>();
 
