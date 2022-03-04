@@ -5,10 +5,10 @@
         public HumanPlayer()
         {
             IsPass = false;
-            Name = "Player: ";
+            Name = "Player";
         }
 
-        public override bool IsPass { get; set; }
+        public override bool IsPass { get; protected set; }
 
         public override void TakeCard()
         {

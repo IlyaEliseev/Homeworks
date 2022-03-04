@@ -7,14 +7,14 @@
         public ComputerPlayer(): base()
         {
             IsPass = false;
-            Name = $"Computer {_playerCount++}: ";
+            Name = $"Computer {_playerCount++}";
         }
         
-        public override bool IsPass { get; set; }
+        public override bool IsPass { get; protected set; }
 
         public override void TakeCard()
         {
-            if (Total <= 18)
+            if (_total <= 18)
             {
                 var card = Shoe.GetCard();
                 AddCardInHand(card);

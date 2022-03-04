@@ -1,10 +1,10 @@
-﻿namespace BlackJackGameCLI
+﻿namespace BlackJackGameCLI.Persons
 {
     public abstract class Person
     {
-        private protected int Total { get; set; }
-        private protected string Name { get; set; }
-        public abstract bool IsPass { get; set; }
+        private protected int _total;
+        public string Name { get; private protected set; }
+        public abstract bool IsPass { get; protected set; }
 
         private readonly List<Card> _hand = new List<Card>();
 
@@ -12,10 +12,10 @@
 
         private protected int CalculateTotal(Card card)
         {
-            return Total += card.Value;
+            return _total += card.Value;
         }
 
-        private protected bool SayPass()
+        public bool SayPass()
         {
             return IsPass = true;
         }
@@ -36,7 +36,12 @@
 
         public void ShowHand()
         {
-            Console.WriteLine($"{Name}: { string.Join(" | ", _handInformation)} [Total: {Total}]");
+            Console.WriteLine($"{Name} : { string.Join(" | ", _handInformation)} [Total: {_total}]");
+        }
+
+        public int GetTotal()
+        {
+            return _total;
         }
     }
 }

@@ -5,14 +5,14 @@
         public Croupier()
         {
             IsPass = false;
-            Name = "Crouper: ";
+            Name = "Crouper";
         }
 
-        public override bool IsPass { get ; set ; }
+        public override bool IsPass { get ; protected set; }
 
         public override void TakeCard()
         {
-            if (Total <= 15)
+            if (_total <= 15)
             {
                 var card = Shoe.GetCard();
                 AddCardInHand(card);

@@ -22,6 +22,14 @@ namespace BlackJackGameCLI
             }
         }
 
+        private void CalculatePoints()
+        {
+            foreach(var player in players)
+            {
+                player.ShowHand();
+            }
+        }
+
         public void Start()
         {
             Shoe.FillShoe();
@@ -31,17 +39,27 @@ namespace BlackJackGameCLI
                 Console.Write("Give a card?: ");
                 string answer = Console.ReadLine();
 
-                foreach (var player in players)
+                if (answer == "y")
                 {
-                    if (answer == "y" && player.IsPass != true)
+                    Person player = players
+                            .Where(x => x.Name == "Player")
+                            .FirstOrDefault();
+                    if (player != null && player.GetTotal() <= 21)
                     {
                         player.TakeCard();
                     }
-                    else
-                    {
-                        isShuffleEnd = true;
-                        Console.WriteLine("End");
-                    }
+                }
+                if (answer == "n")
+                {
+                    Person player = players
+                        .Where(x => x.Name == "Player")
+                        .FirstOrDefault();
+                    player.SayPass();
+                }
+
+                foreach (var player in players.Where(x => x.IsPass == false).Where(x => x.Name != "Player"))
+                {
+                    player.TakeCard();
                 }
 
                 ShowHands();
