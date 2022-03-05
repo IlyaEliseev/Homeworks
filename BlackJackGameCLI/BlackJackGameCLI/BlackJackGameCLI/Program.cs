@@ -2,4 +2,3 @@
 
 Shuffle shuffle = new Shuffle();
 shuffle.Start();
-Console.ReadKey();

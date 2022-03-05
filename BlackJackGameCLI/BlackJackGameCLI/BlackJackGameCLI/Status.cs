@@ -1,6 +1,6 @@
 ﻿namespace BlackJackGameCLI
 {
-    enum Status
+    public enum Status
     {
         Winner,
         Loser

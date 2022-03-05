@@ -31,15 +31,19 @@ namespace BlackJackGameCLI
                 {
                     foreach (var player in players.Where(x => x.Name != Roll.Croupier.ToString()))
                     {
-                        if (player.GetTotal() > 21)
+                        bool isPlayerWinner = player.GetTotal() <= 21 && player.GetTotal() > cropier.GetTotal();
+                        bool isPlayerPointsALot = player.GetTotal() > 21;
+                        bool isCroupierWinner = cropier.GetTotal() > player.GetTotal() && cropier.GetTotal() <= 21;
+
+                        if (isPlayerPointsALot)
                         {
                             player.GameStatus = Status.Loser.ToString();
                         }
-                        if (cropier.GetTotal() > player.GetTotal() && cropier.GetTotal() <= 21)
+                        if (isCroupierWinner)
                         {
                             player.GameStatus = Status.Loser.ToString();
                         }
-                        if (player.GetTotal() <= 21)
+                        if (isPlayerWinner)
                         {
                             player.GameStatus = Status.Winner.ToString();
                         }
@@ -61,34 +65,34 @@ namespace BlackJackGameCLI
             {
                 do
                 {
-                    Console.Write("Give a card? y/n: ");
-                    string answer = Console.ReadLine().Trim().ToLower();
+                    string answer = Menu.CheckUserInputToDrawCard();
 
-                    if (answer == "y")
-                    {
-                        Person humanPlayer = players
-                                .Where(x => x.Name == Roll.Player.ToString())
+                    Person humanPlayer = players
+                                .Where(x => x.Name == Roll.Player
+                                .ToString())
                                 .FirstOrDefault();
 
-                        if (humanPlayer != null && humanPlayer.GetTotal() <= 21)
-                        {
-                            humanPlayer.TakeCard();
-                        }
-                    }
-                    if (answer == "n")
+                    switch (answer)
                     {
-                        Person humanPlayer = players
-                            .Where(x => x.Name == Roll.Player.ToString())
-                            .FirstOrDefault();
-
-                        humanPlayer.SayPass();
+                        case "y":
+                            if (humanPlayer != null && humanPlayer.GetTotal() <= 21)
+                            {
+                                humanPlayer.DrawCard();
+                            }
+                            break;
+                        case "n":
+                            humanPlayer.SayPass();
+                            break;
+                        default:
+                            break;
                     }
 
                     foreach (var player in players
                         .Where(x => x.IsPass == false)
-                        .Where(x => x.Name != Roll.Player.ToString()))
+                        .Where(x => x.Name != Roll.Player
+                        .ToString()))
                     {
-                        player.TakeCard();
+                        player.DrawCard();
                     }
 
                     ShowHands();
@@ -98,22 +102,8 @@ namespace BlackJackGameCLI
                 } while (!isPass);
                 
                 DefineWinner();
-                
-                Console.Write("Play again? y/n: ");
-                string userInput = Console.ReadLine().ToLower().Trim();
 
-                if (userInput == "y")
-                {
-                    isShuffleEnd = false;
-                    foreach (var player in players)
-                    {
-                        player.ClearAll();
-                    }
-                }
-                else if (userInput == "n")
-                {
-                    isShuffleEnd = true;
-                }
+                isShuffleEnd = Menu.CheckUserinputToOneMoreShuffle(isShuffleEnd, players);
             }
         }
     }

@@ -10,7 +10,7 @@
             Name = $"{Roll.Computer} {_playerCount++}";
         }
         
-        public override void TakeCard()
+        public override void DrawCard()
         {
             if (_total <= 18)
             {

@@ -8,7 +8,7 @@
             Name = Roll.Croupier.ToString();
         }
 
-        public override void TakeCard()
+        public override void DrawCard()
         {
             if (_total <= 15)
             {

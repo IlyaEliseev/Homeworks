@@ -33,11 +33,11 @@
             return true;
         }
 
-        public abstract void TakeCard();
+        public abstract void DrawCard();
 
         public void ShowHand()
         {
-            Console.WriteLine($"{Name} : { string.Join(" | ", _handInformation)} [Total: {_total}]");
+            Console.WriteLine($"[{Name}]: { string.Join(" | ", _handInformation)} [Total: {_total}]");
         }
 
         public int GetTotal()

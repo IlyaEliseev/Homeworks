@@ -8,7 +8,7 @@
             Name = Roll.Player.ToString();
         }
 
-        public override void TakeCard()
+        public override void DrawCard()
         {
             var card = Shoe.GetCard();
             AddCardInHand(card);
