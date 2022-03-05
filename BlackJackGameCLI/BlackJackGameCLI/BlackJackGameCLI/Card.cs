@@ -8,6 +8,5 @@
         public string Index { get; set; }
 
         public bool IsAviable = true;
-
     }
 }

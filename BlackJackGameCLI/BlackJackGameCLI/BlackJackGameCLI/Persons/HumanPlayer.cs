@@ -5,7 +5,7 @@
         public HumanPlayer()
         {
             IsPass = false;
-            Name = Roll.Player.ToString();
+            Name = Roll.HumanPlayer.ToString();
         }
 
         public override void DrawCard()

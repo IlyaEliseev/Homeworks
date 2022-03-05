@@ -68,7 +68,7 @@ namespace BlackJackGameCLI
                     string answer = Menu.CheckUserInputToDrawCard();
 
                     Person humanPlayer = players
-                                .Where(x => x.Name == Roll.Player
+                                .Where(x => x.Name == Roll.HumanPlayer
                                 .ToString())
                                 .FirstOrDefault();
 
@@ -89,7 +89,7 @@ namespace BlackJackGameCLI
 
                     foreach (var player in players
                         .Where(x => x.IsPass == false)
-                        .Where(x => x.Name != Roll.Player
+                        .Where(x => x.Name != Roll.HumanPlayer
                         .ToString()))
                     {
                         player.DrawCard();

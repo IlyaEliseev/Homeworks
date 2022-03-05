@@ -2,7 +2,7 @@
 {
     public enum Roll
     {
-        Player,
+        HumanPlayer,
         Computer,
         Croupier
     }
