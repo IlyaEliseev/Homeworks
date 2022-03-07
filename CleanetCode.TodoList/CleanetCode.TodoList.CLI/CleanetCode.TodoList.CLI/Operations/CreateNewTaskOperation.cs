@@ -10,7 +10,7 @@ namespace CleanetCode.TodoList.CLI.Operations
 
         public void Execute()
         {
-            if (UserSession.Login == true)
+            if (UserSession.Login)
             {
                 Console.Write("Input task name: ");
                 string taskName = Console.ReadLine();

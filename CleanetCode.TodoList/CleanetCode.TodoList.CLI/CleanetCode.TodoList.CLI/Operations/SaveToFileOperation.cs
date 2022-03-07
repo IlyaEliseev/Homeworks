@@ -8,7 +8,7 @@ namespace CleanetCode.TodoList.CLI.Operations
 
         public void Execute()
         {
-            if (UserSession.Login == true)
+            if (UserSession.Login)
             {
                 FileService.WriteUsersToFile();
                 FileService.WriteTasksToFile();

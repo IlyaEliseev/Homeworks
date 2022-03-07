@@ -9,7 +9,7 @@ namespace CleanetCode.TodoList.CLI.Operations
 
         public void Execute()
         {
-            if (UserSession.Login == true)
+            if (UserSession.Login)
             {
                 List<TaskModel> tasks = TaskStorage.GetAllAtCurrentUser();
 

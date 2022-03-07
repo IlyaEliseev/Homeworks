@@ -6,7 +6,7 @@
 
         public void Execute()
         {
-            if (UserSession.Login == true)
+            if (UserSession.Login)
             {
                 IOperation[] _operations = new IOperation[]
                 {
